@@ -29,19 +29,11 @@ public class UserController {
     @RequestMapping("find")
     public ModelAndView findUser() {
         ModelAndView modelAndView = new ModelAndView();
-        try {
-            int i = 1/0;
-            User user = userService.selectUserById(1);
+        User user = userService.selectUserById(1);
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("user/user");
 
-            logger.info(user.getUserName() + "=============");
-
-            modelAndView.addObject("user", user);
-            modelAndView.setViewName("user/user");
-
-            return modelAndView;
-        } catch(Exception e) {
-            logger.error(e.getMessage(), e);
-            throw new RuntimeException();
-        }
+        logger.info(user.getUserName());
+        return modelAndView;
     }
 }

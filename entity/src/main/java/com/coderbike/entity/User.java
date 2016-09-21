@@ -6,6 +6,7 @@ package com.coderbike.entity;
  * author: liubingguang
  * date: 2016/9/20 15:11
  */
+
 public class User {
 
     private Integer userId;
