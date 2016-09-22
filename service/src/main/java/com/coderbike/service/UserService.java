@@ -11,4 +11,6 @@ import com.coderbike.entity.User;
 public interface UserService {
 
     User selectUserById(Integer userId);
+
+    User findById(Integer userId);
 }

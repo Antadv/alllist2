@@ -1,5 +1,7 @@
 package com.coderbike.entity;
 
+import javax.persistence.*;
+
 /**
  * <p>描述<p/>
  * Created with IDEA
@@ -7,8 +9,12 @@ package com.coderbike.entity;
  * date: 2016/9/20 15:11
  */
 
+@Entity
+@Table(name = "T_USER")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     private String userName;
     private String userPassword;
