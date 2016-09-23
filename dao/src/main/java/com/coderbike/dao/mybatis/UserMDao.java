@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMDao {
 
-    User selectUserById(Integer userId);
+    User selectUserById(Integer id);
 }

@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface UserDao extends JpaRepository<User, Integer> {
 
-    @Query("from User u where u.userId=?")
+    @Query("from User u where u.id=?")
     User findById(Integer userId);
 }

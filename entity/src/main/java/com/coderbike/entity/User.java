@@ -1,5 +1,7 @@
 package com.coderbike.entity;
 
+import com.coderbike.entity.base.BaseEntity;
+
 import javax.persistence.*;
 
 /**
@@ -11,21 +13,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer userId;
     private String userName;
     private String userPassword;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -41,14 +32,5 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                '}';
     }
 }
