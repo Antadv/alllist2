@@ -11,11 +11,8 @@
 
     <!-- sub modules -->
     <modules>
-        <module>common</module>
-        <module>entity</module>
-        <module>dao</module>
-        <module>service</module>
-        <module>web-app</module>
+        <module>library</module>
+        <module>app</module>
     </modules>
 
     <properties>
@@ -311,6 +308,12 @@
             <version>${aspectj-aspectjweaver.version}</version>
         </dependency>
 
+        <!-- 全局依赖 -->
+        <dependency>
+            <groupId>com.coderbike</groupId>
+            <artifactId>library</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
