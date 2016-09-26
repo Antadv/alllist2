@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface JpaBaseService<T extends BaseEntity, ID extends Serializable, DAO extends JpaBaseDao<T, ID>> {
 
+    DAO getDao();
+
     /**
      * save
      *
