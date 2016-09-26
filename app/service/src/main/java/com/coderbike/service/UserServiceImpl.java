@@ -1,12 +1,14 @@
 package com.coderbike.service;
 
-import com.coderbike.core.service.AbstactService;
-import com.coderbike.dao.jpa.UserDao;
-import com.coderbike.dao.mybatis.UserMDao;
+import com.coderbike.core.service.GenericServiceImpl;
+import com.coderbike.dao.jpa.UserJpaDao;
+import com.coderbike.dao.mybatis.UserMybatisDao;
 import com.coderbike.entity.User;
+import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 
 /**
  * <p>描述<p/>
@@ -16,20 +18,28 @@ import javax.annotation.Resource;
  */
 
 @Service
-public class UserServiceImpl extends AbstactService implements UserService {
+public class UserServiceImpl extends GenericServiceImpl<User, Integer, UserJpaDao, UserMybatisDao> implements UserService {
 
     @Resource
-    private UserMDao userMDao;
+    private UserJpaDao userJpaDao;
 
-    @Resource
-    private UserDao userDao;
+    public UserServiceImpl(JpaEntityInformation<User, Integer> entityInformation, EntityManager entityManager) {
+        super(entityInformation, entityManager);
+    }
 
     public User selectUserById(Integer userId) {
-        return userMDao.selectUserById(userId);
+        return userJpaDao.getOne(1);
     }
 
     public User findById(Integer userId) {
-        //return userDao.findById(userId);
-        return userDao.findOne(1);
+        return userJpaDao.getOne(1);
+    }
+
+    public UserJpaDao getJpaDao() {
+        return null;
+    }
+
+    public UserMybatisDao getMybatisDao() {
+        return null;
     }
 }

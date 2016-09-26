@@ -1,7 +1,6 @@
 package com.coderbike.baseTest;
 
 import org.junit.runner.RunWith;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,5 +14,4 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"classpath:spring/application.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class BaseTest {
-    protected final org.slf4j.Logger Logger = LoggerFactory.getLogger(this.getClass());
 }

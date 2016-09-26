@@ -1,7 +1,7 @@
 package com.coderbike.dao;
 
 import com.coderbike.baseTest.BaseTest;
-import com.coderbike.dao.jpa.UserDao;
+import com.coderbike.dao.jpa.UserJpaDao;
 import com.coderbike.entity.User;
 import org.junit.Test;
 
@@ -16,11 +16,11 @@ import javax.annotation.Resource;
 public class UserDaoTest extends BaseTest {
 
     @Resource
-    private UserDao userDao;
+    private UserJpaDao userJpaDao;
 
     @Test
     public void test() {
-        User user = userDao.findById(1);
+        User user = userJpaDao.getOne(1);
         System.out.println(user.getUserName());
     }
 }
