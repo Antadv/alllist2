@@ -18,17 +18,7 @@ public class UserServiceTest extends BaseTest {
     private UserService userService;
 
     @Test
-    public void testSelect() {
-        User user = userService.selectUserById(1);
-        //Logger.info(user.getUserName());
-        System.out.println(user.getUserName());
-    }
-
-    @Test
     public void findById() {
-        User user = userService.findById(1);
-        //Logger.info(user.getUserName());
-        System.out.println(user.getUserName());
     }
 
     @Test
