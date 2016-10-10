@@ -52,9 +52,9 @@
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
     </bean>
 
-    <!-- spring data jpa
+    <!-- spring data repository
             transactionManager
-            entityManagerFactory: jpa implemented by Hibernate
+            entityManagerFactory: repository implemented by Hibernate
     -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -88,7 +88,7 @@
     <!-- 使用annotation定义事物 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-    <!-- scan jpa package -->
+    <!-- scan repository package -->
     <jpa:repositories base-package="com.coderbike.dao.jpa" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" />
 
     <!-- JSR303 Validator定义 -->

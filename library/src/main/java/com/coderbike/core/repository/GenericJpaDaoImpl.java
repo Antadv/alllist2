@@ -1,4 +1,4 @@
-package com.coderbike.core.jpa;
+package com.coderbike.core.repository;
 
 import com.coderbike.core.entity.BaseEntity;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;

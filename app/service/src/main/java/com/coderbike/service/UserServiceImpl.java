@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  */
 
 @Service
-public class UserServiceImpl extends GenericServiceImpl<User, Integer, UserJpaDao> implements UserService {
+public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
 
     @Resource
     private UserJpaDao userJpaDao;
