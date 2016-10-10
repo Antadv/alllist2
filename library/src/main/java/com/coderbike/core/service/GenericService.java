@@ -134,7 +134,7 @@ public interface GenericService<T extends BaseEntity, ID extends Serializable> {
      * @param id
      * @return
      */
-    T findByIdAndNotDelete(String id);
+    T findByIdAndNotDelete(ID id);
 
     /**
      * 获取数据库时间

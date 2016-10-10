@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -130,7 +131,13 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @return
      */
     public T save(T entity) {
-        return null;
+        Assert.notNull(entity, "entity is null");
+        Date date = new Date();
+        if (entity.getId() == null) {
+            entity.setFirstTime(date);
+        }
+        entity.setLastTime(date);
+        return genericJpaDao.save(entity);
     }
 
     /**
@@ -139,7 +146,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param entity
      */
     public void delete(T entity) {
-
+        genericJpaDao.delete(entity);
     }
 
     /**
@@ -148,11 +155,11 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param id
      */
     public void delete(ID id) {
-
+        genericJpaDao.delete(id);
     }
 
     public T findById(ID id) {
-        return null;
+        return genericJpaDao.findOne(id);
     }
 
     /**
@@ -172,7 +179,11 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @return
      */
     public T deleteByStatus(T entity, String delReason) {
-        return null;
+        Assert.notNull(entity, "entity is null");
+
+        entity.setDeleteStatus(false);
+        entity.setDelReason(delReason);
+        return save(entity);
     }
 
     /**
@@ -183,7 +194,12 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @return
      */
     public T deleteByStatus(ID id, String delReason) {
-        return null;
+        Assert.notNull(id, "id is null");
+
+        T entity = findById(id);
+        entity.setDeleteStatus(false);
+        entity.setDelReason(delReason);
+        return save(entity);
     }
 
     /**
@@ -192,8 +208,8 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param id
      * @return
      */
-    public T findByIdAndNotDelete(String id) {
-        return null;
+    public T findByIdAndNotDelete(ID id) {
+        return genericJpaDao.findByIdAndDelStatusFalse(id);
     }
 
     /**

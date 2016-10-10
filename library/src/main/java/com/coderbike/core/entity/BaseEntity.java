@@ -19,6 +19,7 @@ public abstract class BaseEntity {
     protected Integer id;                   //id
     protected Date firstTime;               //第一次插入时间
     protected Date lastTime;                //最后修改时间
+    protected String delReason;             //删除描述
     protected boolean deleteStatus = false; //逻辑删除状态
 
     @Id
@@ -53,5 +54,13 @@ public abstract class BaseEntity {
 
     public void setDeleteStatus(boolean deleteStatus) {
         this.deleteStatus = deleteStatus;
+    }
+
+    public String getDelReason() {
+        return delReason;
+    }
+
+    public void setDelReason(String delReason) {
+        this.delReason = delReason;
     }
 }
