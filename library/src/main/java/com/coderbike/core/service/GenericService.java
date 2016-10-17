@@ -105,6 +105,11 @@ public interface GenericService<T extends BaseEntity, ID extends Serializable> {
      */
     void delete(ID id);
 
+    /**
+     * 根据id查找
+     * @param id
+     * @return
+     */
     T findById(ID id);
 
     /**

@@ -29,7 +29,7 @@ public class UserController {
     @RequestMapping("find")
     public ModelAndView findUser() {
         ModelAndView modelAndView = new ModelAndView();
-        User user = userService.selectUserById(1);
+        User user = userService.findById(1);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("user/user");
 

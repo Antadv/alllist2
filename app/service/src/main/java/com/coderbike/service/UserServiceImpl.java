@@ -3,9 +3,8 @@ package com.coderbike.service;
 import com.coderbike.core.service.GenericServiceImpl;
 import com.coderbike.dao.jpa.UserJpaDao;
 import com.coderbike.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * <p>描述<p/>
@@ -17,10 +16,6 @@ import javax.annotation.Resource;
 @Service
 public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
 
-    @Resource
+    @Autowired
     private UserJpaDao userJpaDao;
-
-    public UserJpaDao getDao() {
-        return userJpaDao;
-    }
 }

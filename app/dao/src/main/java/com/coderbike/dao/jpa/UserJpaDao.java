@@ -1,7 +1,5 @@
 package com.coderbike.dao.jpa;
 
-import com.coderbike.core.repository.GenericJpaDao;
-import com.coderbike.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface UserJpaDao extends GenericJpaDao<User, Integer> {
+public interface UserJpaDao {
 
 }

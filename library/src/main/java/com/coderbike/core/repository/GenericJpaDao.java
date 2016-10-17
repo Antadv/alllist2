@@ -18,5 +18,5 @@ public interface GenericJpaDao<T extends BaseEntity, ID extends Serializable>
     /**
      * 根据id和查询没有被逻辑删除的实体
      */
-    T findByIdAndDelStatusFalse(ID id);
+    T findByIdAndDeleteStatusFalse(ID id);
 }

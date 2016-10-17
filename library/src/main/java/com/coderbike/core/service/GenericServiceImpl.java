@@ -22,7 +22,7 @@ import java.util.List;
  * date: 2016/9/26 17:30
  */
 @Transactional(readOnly = true)
-public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> implements GenericService<T, ID> {
+public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> implements GenericService<T, ID> {
 
     @Autowired
     private GenericJpaDao<T, ID> genericJpaDao;
@@ -32,6 +32,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @return
      */
+    @Override
     public Class<T> getEntityClass() {
         return null;
     }
@@ -42,6 +43,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param spec
      * @return
      */
+    @Override
     public List<T> findAll(Specification<T> spec) {
         return genericJpaDao.findAll(spec);
     }
@@ -53,6 +55,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param pageable
      * @return
      */
+    @Override
     public Page<T> findAll(Specification<T> spec, Pageable pageable) {
         return genericJpaDao.findAll(spec, pageable);
     }
@@ -64,6 +67,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param sort
      * @return
      */
+    @Override
     public List<T> findAll(Specification<T> spec, Sort sort) {
         return genericJpaDao.findAll(spec, sort);
     }
@@ -74,6 +78,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param spec
      * @return
      */
+    @Override
     public long count(Specification<T> spec) {
         return genericJpaDao.count(spec);
     }
@@ -83,6 +88,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @return
      */
+    @Override
     public List<T> findAll() {
         return genericJpaDao.findAll();
     }
@@ -93,6 +99,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param sort
      * @return
      */
+    @Override
     public List<T> findAll(Sort sort) {
         return findAll(sort);
     }
@@ -103,6 +110,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param ids
      * @return
      */
+    @Override
     public List<T> findAll(Iterable<ID> ids) {
         return genericJpaDao.findAll(ids);
     }
@@ -110,6 +118,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
     /**
      * 刷新session
      */
+    @Override
     public void flush() {
         genericJpaDao.flush();
     }
@@ -120,6 +129,8 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param entity
      * @return
      */
+    @Override
+    @Transactional
     public T saveAndFlush(T entity) {
         return null;
     }
@@ -130,6 +141,8 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param entity
      * @return
      */
+    @Override
+    @Transactional
     public T save(T entity) {
         Assert.notNull(entity, "entity is null");
         Date date = new Date();
@@ -145,6 +158,8 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @param entity
      */
+    @Override
+    @Transactional
     public void delete(T entity) {
         genericJpaDao.delete(entity);
     }
@@ -154,10 +169,13 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @param id
      */
+    @Override
+    @Transactional
     public void delete(ID id) {
         genericJpaDao.delete(id);
     }
 
+    @Override
     public T findById(ID id) {
         return genericJpaDao.findOne(id);
     }
@@ -167,6 +185,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @param entity 要保存或修改的实体
      */
+    @Override
     public void bindModelWithBaseProperty(T entity) {
 
     }
@@ -178,6 +197,8 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param delReason
      * @return
      */
+    @Override
+    @Transactional
     public T deleteByStatus(T entity, String delReason) {
         Assert.notNull(entity, "entity is null");
 
@@ -193,12 +214,13 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param delReason
      * @return
      */
+    @Override
+    @Transactional
     public T deleteByStatus(ID id, String delReason) {
         Assert.notNull(id, "id is null");
 
         T entity = findById(id);
         entity.setDeleteStatus(false);
-        entity.setDelReason(delReason);
         return save(entity);
     }
 
@@ -208,8 +230,10 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      * @param id
      * @return
      */
+    @Override
+    @Transactional
     public T findByIdAndNotDelete(ID id) {
-        return genericJpaDao.findByIdAndDelStatusFalse(id);
+        return genericJpaDao.findByIdAndDeleteStatusFalse(id);
     }
 
     /**
@@ -217,6 +241,7 @@ public class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> i
      *
      * @return
      */
+    @Override
     public Date getCurrentDate() {
         return null;
     }

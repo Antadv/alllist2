@@ -19,6 +19,8 @@ public class UserServiceTest extends BaseTest {
 
     @Test
     public void findById() {
+        User user = userService.findById(1);
+        System.out.println(user);
     }
 
     @Test
@@ -27,5 +29,4 @@ public class UserServiceTest extends BaseTest {
         user.setUserName("刀刀_2");
         user.setUserPassword("123456");
     }
-
 }
