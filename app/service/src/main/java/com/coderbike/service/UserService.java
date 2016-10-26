@@ -10,4 +10,6 @@ import com.coderbike.entity.User;
  * date: 2016/9/20 15:18
  */
 public interface UserService extends GenericService<User, Integer> {
+
+    User findById(Integer userId);
 }

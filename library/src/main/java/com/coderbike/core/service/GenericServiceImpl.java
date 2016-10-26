@@ -25,7 +25,7 @@ import java.util.List;
 public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> implements GenericService<T, ID> {
 
     @Autowired
-    private GenericJpaDao<T, ID> genericJpaDao;
+    protected GenericJpaDao<T, ID> genericJpaDao;
 
     /**
      * 获取实体类型

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>描述<p/>
@@ -35,5 +36,11 @@ public class UserController {
 
         logger.info(user.getUserName());
         return modelAndView;
+    }
+
+    @RequestMapping("findAll")
+    public void findAll() {
+        List<User> userList = userService.findAll();
+        System.out.println(userList);
     }
 }
