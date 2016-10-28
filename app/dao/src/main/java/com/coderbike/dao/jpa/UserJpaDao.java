@@ -1,5 +1,6 @@
 package com.coderbike.dao.jpa;
 
+import com.coderbike.core.repository.BaseRepository;
 import com.coderbike.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * date: 2016/9/27 1:04
  */
 
-public interface UserJpaDao extends JpaRepository<User, Integer> {
+public interface UserJpaDao extends BaseRepository<User, Integer> {
 
     @Query("from User u where u.id=?")
     User findById(Integer userId);
