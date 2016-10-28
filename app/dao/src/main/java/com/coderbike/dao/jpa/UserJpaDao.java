@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
  * date: 2016/9/27 1:04
  */
 
-@Repository
 public interface UserJpaDao extends JpaRepository<User, Integer> {
 
     @Query("from User u where u.id=?")

@@ -14,7 +14,7 @@ import java.io.Serializable;
  * date: 2016/9/26 16:13
  */
 @NoRepositoryBean
-public interface GenericJpaDao<T extends BaseEntity, ID extends Serializable>
+public interface BaseRepository<T extends BaseEntity, ID extends Serializable>
         extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
 
     T findByIdAndDeleteStatusFalse(ID id);

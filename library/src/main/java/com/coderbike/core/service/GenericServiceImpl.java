@@ -2,7 +2,7 @@ package com.coderbike.core.service;
 
 
 import com.coderbike.core.entity.BaseEntity;
-import com.coderbike.core.repository.GenericJpaDao;
+import com.coderbike.core.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,110 +25,48 @@ import java.util.List;
 public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serializable> implements GenericService<T, ID> {
 
     @Autowired
-    protected GenericJpaDao<T, ID> genericJpaDao;
+    protected BaseRepository<T, ID> baseRepository;
 
-    /**
-     * 获取实体类型
-     *
-     * @return
-     */
     @Override
     public Class<T> getEntityClass() {
         return null;
     }
 
-    /**
-     * 查找所有
-     *
-     * @param spec
-     * @return
-     */
     @Override
     public List<T> findAll(Specification<T> spec) {
-        return genericJpaDao.findAll(spec);
+        return baseRepository.findAll(spec);
     }
 
-    /**
-     * 分页查找
-     *
-     * @param spec
-     * @param pageable
-     * @return
-     */
     @Override
     public Page<T> findAll(Specification<T> spec, Pageable pageable) {
-        return genericJpaDao.findAll(spec, pageable);
+        return baseRepository.findAll(spec, pageable);
     }
 
-    /**
-     * 排序查找
-     *
-     * @param spec
-     * @param sort
-     * @return
-     */
     @Override
     public List<T> findAll(Specification<T> spec, Sort sort) {
-        return genericJpaDao.findAll(spec, sort);
+        return baseRepository.findAll(spec, sort);
     }
 
-    /**
-     * 获取记录数
-     *
-     * @param spec
-     * @return
-     */
     @Override
     public long count(Specification<T> spec) {
-        return genericJpaDao.count(spec);
+        return baseRepository.count(spec);
     }
 
-    /**
-     * 查找所有
-     *
-     * @return
-     */
     @Override
     public List<T> findAll() {
-        return genericJpaDao.findAll();
+        return baseRepository.findAll();
     }
 
-    /**
-     * 查找所有并排序
-     *
-     * @param sort
-     * @return
-     */
     @Override
     public List<T> findAll(Sort sort) {
         return findAll(sort);
     }
 
-    /**
-     * 根据ids 查找
-     *
-     * @param ids
-     * @return
-     */
     @Override
     public List<T> findAll(Iterable<ID> ids) {
-        return genericJpaDao.findAll(ids);
+        return baseRepository.findAll(ids);
     }
 
-    /**
-     * 刷新session
-     */
-    @Override
-    public void flush() {
-        genericJpaDao.flush();
-    }
-
-    /**
-     * 刷新并保存
-     *
-     * @param entity
-     * @return
-     */
     @Override
     @Transactional
     public T saveAndFlush(T entity) {
@@ -137,9 +75,6 @@ public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serial
 
     /**
      * 保存
-     *
-     * @param entity
-     * @return
      */
     @Override
     @Transactional
@@ -150,70 +85,26 @@ public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serial
             entity.setFirstTime(date);
         }
         entity.setLastTime(date);
-        return genericJpaDao.save(entity);
+        return baseRepository.save(entity);
     }
 
-    /**
-     * 删除实体
-     *
-     * @param entity
-     */
     @Override
     @Transactional
     public void delete(T entity) {
-        genericJpaDao.delete(entity);
+        baseRepository.delete(entity);
     }
 
-    /**
-     * 根据id物理删除
-     *
-     * @param id
-     */
     @Override
     @Transactional
     public void delete(ID id) {
-        genericJpaDao.delete(id);
+        baseRepository.delete(id);
     }
 
     @Override
     public T findById(ID id) {
-        return genericJpaDao.findOne(id);
+        return baseRepository.findOne(id);
     }
 
-    /**
-     * 绑定模型中的基础属性：创建人、创建时间、修改人、修改时间
-     *
-     * @param entity 要保存或修改的实体
-     */
-    @Override
-    public void bindModelWithBaseProperty(T entity) {
-
-    }
-
-    /**
-     * 逻辑删除
-     *
-     * @param entity
-     * @param delReason
-     * @return
-     */
-    @Override
-    @Transactional
-    public T deleteByStatus(T entity, String delReason) {
-        Assert.notNull(entity, "entity is null");
-
-        entity.setDeleteStatus(false);
-        entity.setDelReason(delReason);
-        return save(entity);
-    }
-
-    /**
-     * 根据id逻辑删除
-     *
-     * @param id
-     * @param delReason
-     * @return
-     */
     @Override
     @Transactional
     public T deleteByStatus(ID id, String delReason) {
@@ -224,25 +115,10 @@ public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serial
         return save(entity);
     }
 
-    /**
-     * 根据id查找，没有逻辑删除
-     *
-     * @param id
-     * @return
-     */
     @Override
     @Transactional
     public T findByIdAndNotDelete(ID id) {
-        return genericJpaDao.findByIdAndDeleteStatusFalse(id);
+        return baseRepository.findByIdAndDeleteStatusFalse(id);
     }
 
-    /**
-     * 获取数据库时间
-     *
-     * @return
-     */
-    @Override
-    public Date getCurrentDate() {
-        return null;
-    }
 }
