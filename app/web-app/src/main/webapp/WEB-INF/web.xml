@@ -83,7 +83,7 @@
   </session-config>
 
   <!--错误页面-->
-  <error-page>
+<!--  <error-page>
     <exception-type>java.lang.Throwable</exception-type>
     <location>/WEB-INF/views/error/500.jsp</location>
   </error-page>
@@ -94,5 +94,5 @@
   <error-page>
     <error-code>404</error-code>
     <location>/WEB-INF/views/error/404.jsp</location>
-  </error-page>
+  </error-page>-->
 </web-app>

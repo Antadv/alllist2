@@ -18,7 +18,49 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-    <build>
+
+<!--    <build>
         <finalName>web-app</finalName>
-    </build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat8-maven-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        <url>http://103.37.156.150:8080/manager/text</url>
+                        &lt;!&ndash; 此处的名字必须和setting.xml中配置的ID一致&ndash;&gt;
+                        <server>imant</server>
+                        <password>8089</password>
+                        &lt;!&ndash; 此处的名字是项目发布的工程名&ndash;&gt;
+                        <path>/web-app</path>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>-->
+
+    <!-- 打包发布 -->
+<!--    <distributionManagement>
+        <repository>
+            <id>releases</id>&lt;!&ndash;这个ID需要与你的release仓库的Repository ID一致&ndash;&gt;
+            <url>http://103.37.156.150:8081/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>snapshots</id>&lt;!&ndash;这个ID需要与你的snapshots仓库的Repository ID一致&ndash;&gt;
+            <url>http://103.37.156.150:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>-->
 </project>

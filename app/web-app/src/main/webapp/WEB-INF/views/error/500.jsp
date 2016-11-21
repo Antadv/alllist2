@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>404</title>
+    <title>500</title>
 </head>
 <body>
 500
