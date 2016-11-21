@@ -16,14 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * <p>controller 全局异常处理类<p/>
  * Created with IDEA
- * author: liubingguang
+ * author: imant
  * date: 2016/11/21 10:35
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
     // 404
     private static final String NOT_FOUND_ERROR = "";
     // 500
@@ -32,7 +31,7 @@ public class GlobalExceptionHandler {
 
     /**
      * <p>处理404错误<p/>
-     * author: liubingguang
+     * author: imant
      * date: 2016/11/21 10:39
      */
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -43,7 +42,7 @@ public class GlobalExceptionHandler {
 
     /**
      * <p>认证异常<p/>
-     * author: liubingguang
+     * author: imant
      * date: 2016/11/21 11:00
      */
     @ExceptionHandler(AuthenException.class)
@@ -53,7 +52,7 @@ public class GlobalExceptionHandler {
 
     /**
      * <p>授权异常<p/>
-     * author: liubingguang
+     * author: imant
      * date: 2016/11/21 11:00
      */
     @ExceptionHandler(AuthoException.class)
@@ -64,13 +63,12 @@ public class GlobalExceptionHandler {
 
     /**
      * <p>500内部错误<p/>
-     * author: liubingguang
+     * author: imant
      * date: 2016/11/21 13:04
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView internalErrorHandler(HttpServletRequest req, Exception e) {
-        System.out.println("统一异常处理");
         return new ModelAndView("error/500");
     }
 }
