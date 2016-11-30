@@ -109,7 +109,7 @@
         <context:property-placeholder location="classpath:properties/dev.properties"/>
     </beans>
     <!-- pro properties location -->
-    <beans profile="pro">
+    <beans profile="pro" >
         <context:property-placeholder location="classpath:properties/pro.properties"/>
     </beans>
 </beans>
