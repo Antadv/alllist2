@@ -6,13 +6,13 @@
          id="WebApp_ID" version="2.5">
   <display-name>Archetype Created Web Application</display-name>
 
-  <!-- 配置欢迎页 -->
+  <!-- welcome page -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
-  <!-- 读取spring配置文件 -->
+  <!-- spring configuration location -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/application.xml</param-value>
@@ -34,7 +34,7 @@
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
 
-  <!-- Spring字符集过滤器 -->
+  <!-- character encode -->
   <filter>
     <filter-name>SpringEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -52,10 +52,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <!-- Spring监听器 -->
+  <!-- Spring listener -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
+  <context-param>
+    <param-name>spring.profiles.default</param-name>
+    <param-value>dev</param-value>
+  </context-param>
 
   <!-- 防止Spring内存溢出监听器 -->
   <listener>
@@ -82,17 +87,4 @@
     <session-timeout>20</session-timeout>
   </session-config>
 
-  <!--错误页面-->
-<!--  <error-page>
-    <exception-type>java.lang.Throwable</exception-type>
-    <location>/WEB-INF/views/error/500.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>405</error-code>
-    <location>/WEB-INF/views/error/405.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/WEB-INF/views/error/404.jsp</location>
-  </error-page>-->
 </web-app>

@@ -4,6 +4,7 @@ import com.coderbike.entity.User;
 import com.coderbike.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ import java.util.List;
 public class UserController {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @Value("${appid}")
+    private String appid;
 
     @Resource
     private UserService userService;
@@ -49,5 +53,10 @@ public class UserController {
     public void testException() {
         Assert.notNull(null, "不能为空");
         throw new RuntimeException();
+    }
+
+    @RequestMapping("profile")
+    public void testProfile() {
+        System.out.println(appid);
     }
 }

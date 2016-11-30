@@ -35,7 +35,7 @@ public class GlobalExceptionHandler {
      * date: 2016/11/21 10:39
      */
     @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ModelAndView notFoundErrorHandler(HttpServletRequest req, Exception e) {
         return new ModelAndView("error/404");
     }
