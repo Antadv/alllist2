@@ -99,17 +99,8 @@
     <!-- JSR303 Validator定义 -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-    <!--
-        spring profile for the difference of development and product properties
-        pro environment: add environment argument: -Dspring.profiles.active="pro" in tomcat
-        dev environment: add context param: spring.profiles.default in web.xml
-    -->
-    <!-- development properties location -->
-    <beans profile="dev">
-        <context:property-placeholder location="classpath:properties/dev.properties"/>
-    </beans>
-    <!-- pro properties location -->
-    <beans profile="pro" >
-        <context:property-placeholder location="classpath:properties/pro.properties"/>
-    </beans>
+    <context:property-placeholder
+            properties-ref="applicationProperties"
+            ignore-resource-not-found="true"
+            ignore-unresolvable="true"/>
 </beans>

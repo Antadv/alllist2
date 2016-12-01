@@ -15,7 +15,11 @@
   <!-- spring configuration location -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/application.xml</param-value>
+    <param-value>
+      classpath:spring/application.xml
+      classpath:spring/spring-dev.xml
+      classpath:spring/spring-pro.xml
+    </param-value>
   </context-param>
 
   <!-- 设计路径变量值 -->
