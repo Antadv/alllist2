@@ -13,9 +13,10 @@
 			            http://www.springframework.org/schema/data/jpa
 			            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <!-- scan and create spring bean in base-package -->
+    <!-- scan and create component -->
     <context:component-scan base-package="com.coderbike.service, com.coderbike.dao, com.coderbike.core.service"/>
 
+    <!-- properties resolver for root webapplication context -->
     <context:property-placeholder
             system-properties-mode="NEVER"
             ignore-resource-not-found="true"
