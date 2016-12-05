@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
   <display-name>Archetype Created Web Application</display-name>
 
@@ -15,11 +15,7 @@
   <!-- spring configuration location -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>
-      classpath:spring/application.xml
-      classpath:spring/spring-dev.xml
-      classpath:spring/spring-pro.xml
-    </param-value>
+    <param-value>classpath:spring/application.xml</param-value>
   </context-param>
 
   <!-- 设计路径变量值 -->

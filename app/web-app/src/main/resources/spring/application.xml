@@ -16,14 +16,11 @@
     <!-- scan and create spring bean in base-package -->
     <context:component-scan base-package="com.coderbike.service, com.coderbike.dao, com.coderbike.core.service"/>
 
-    <!-- import config files -->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath:db/*.properties</value>
-            </list>
-        </property>
-    </bean>
+    <context:property-placeholder
+            system-properties-mode="NEVER"
+            ignore-resource-not-found="true"
+            ignore-unresolvable="true"
+            properties-ref="applicationProperties"/>
 
     <!-- data source -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -99,8 +96,25 @@
     <!-- JSR303 Validator定义 -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-    <context:property-placeholder
-            properties-ref="applicationProperties"
-            ignore-resource-not-found="true"
-            ignore-unresolvable="true"/>
+    <!-- dev and pro environment properties profile -->
+    <beans profile="dev">
+        <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="ignoreResourceNotFound" value="true" />
+            <property name="locations">
+                <list>
+                    <value>classpath:properties/dev.properties</value>
+                </list>
+            </property>
+        </bean>
+    </beans>
+    <beans profile="pro">
+        <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="ignoreResourceNotFound" value="true" />
+            <property name="locations">
+                <list>
+                    <value>classpath:properties/pro.properties</value>
+                </list>
+            </property>
+        </bean>
+    </beans>
 </beans>
