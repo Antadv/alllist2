@@ -1,7 +1,7 @@
 package com.coderbike.service;
 
 import com.coderbike.core.service.GenericService;
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 
 /**
  * <p>描述<p/>

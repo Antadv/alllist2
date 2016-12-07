@@ -2,7 +2,7 @@ package com.coderbike.service;
 
 import com.coderbike.core.service.GenericServiceImpl;
 import com.coderbike.dao.jpa.UserJpaDao;
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

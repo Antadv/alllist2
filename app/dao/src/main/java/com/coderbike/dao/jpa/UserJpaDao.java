@@ -1,10 +1,8 @@
 package com.coderbike.dao.jpa;
 
 import com.coderbike.core.repository.BaseRepository;
-import com.coderbike.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.coderbike.entity.user.User;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 /**
  * <p>描述<p/>

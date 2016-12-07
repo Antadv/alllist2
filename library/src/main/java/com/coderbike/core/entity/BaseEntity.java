@@ -4,6 +4,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Field;
 import java.util.Date;
 
 /**
@@ -62,5 +64,30 @@ public abstract class BaseEntity {
 
     public void setDelReason(String delReason) {
         this.delReason = delReason;
+    }
+
+    @Override
+    public String toString() {
+        Field[] fields = getClass().getDeclaredFields();
+        AccessibleObject.setAccessible(fields, true);
+
+        int capacity = fields.length;
+        StringBuilder builder = new StringBuilder(capacity);
+        builder.append("{");
+        for (int i = 0; i < capacity; i++) {
+            try {
+                builder.append(fields[i].getName())
+                        .append("=")
+                        .append(fields[i].get(this));
+
+                if (i < capacity - 1) {
+                    builder.append(", ");
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException("illegal access!", e);
+            }
+        }
+        builder.append("}");
+        return builder.toString();
     }
 }

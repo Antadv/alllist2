@@ -1,4 +1,4 @@
-package com.coderbike.entity;
+package com.coderbike.entity.user;
 
 import com.coderbike.core.entity.BaseEntity;
 
@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * <p>描述<p/>
+ * <p>用户资料<p/>
  * Created with IDEA
  * author: liubingguang
  * date: 2016/9/20 15:11
@@ -16,8 +16,7 @@ import javax.persistence.Table;
 @Table(name = "T_USER")
 public class User extends BaseEntity {
 
-    private String userName;
-    private String userPassword;
+    private String userName;        //用户名
 
     public String getUserName() {
         return userName;
@@ -27,12 +26,10 @@ public class User extends BaseEntity {
         this.userName = userName;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                '}';
     }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
 }

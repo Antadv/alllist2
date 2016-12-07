@@ -1,7 +1,7 @@
 package com.coderbike.service;
 
 import com.coderbike.baseTest.BaseTest;
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 import org.junit.Test;
 
 import javax.annotation.Resource;

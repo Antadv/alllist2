@@ -1,6 +1,6 @@
 package com.coderbike.controller;
 
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 import com.coderbike.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

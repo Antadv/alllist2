@@ -1,6 +1,6 @@
 package com.coderbike.dao.mybatis;
 
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 import org.springframework.stereotype.Repository;
 
 /**

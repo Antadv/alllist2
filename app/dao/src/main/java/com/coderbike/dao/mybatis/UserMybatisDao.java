@@ -1,7 +1,7 @@
 package com.coderbike.dao.mybatis;
 
 import com.coderbike.core.mybatis.GenericMybatisDao;
-import com.coderbike.entity.User;
+import com.coderbike.entity.user.User;
 
 /**
  * <p>描述<p/>
