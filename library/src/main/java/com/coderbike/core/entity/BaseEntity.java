@@ -18,36 +18,36 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class BaseEntity {
 
-    protected Integer id;                   //id
-    protected Date firstTime;               //第一次插入时间
-    protected Date lastTime;                //最后修改时间
+    protected Long id;                      //id
+    protected Date createDate;              //创建时间
+    protected Date updateDate;              //修改时间
     protected String delReason;             //删除描述
     protected boolean deleteStatus = false; //逻辑删除状态
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getFirstTime() {
-        return firstTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setFirstTime(Date firstTime) {
-        this.firstTime = firstTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Date getLastTime() {
-        return lastTime;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setLastTime(Date lastTime) {
-        this.lastTime = lastTime;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
     public boolean isDeleteStatus() {

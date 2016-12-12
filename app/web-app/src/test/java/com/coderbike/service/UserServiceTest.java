@@ -27,6 +27,6 @@ public class UserServiceTest extends BaseTest {
     public void testSave() {
         User user = new User();
         user.setUserName("刀刀_2");
-        user.setUserPassword("123456");
+        user.setSex(true);
     }
 }

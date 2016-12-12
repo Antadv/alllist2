@@ -1,4 +1,4 @@
-package com.coderbike.controller;
+package com.coderbike.web.controller;
 
 import com.coderbike.exception.AuthenException;
 import com.coderbike.exception.AuthoException;

@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.Query;
  * date: 2016/9/27 1:04
  */
 
-public interface UserJpaDao extends BaseRepository<User, Integer> {
+public interface UserJpaDao extends BaseRepository<User, Long> {
 
     @Query("from User u where u.id=?")
-    User findById(Integer userId);
+    User findById(Long userId);
 }

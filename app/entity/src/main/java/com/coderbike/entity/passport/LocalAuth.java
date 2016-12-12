@@ -10,17 +10,17 @@ import javax.persistence.Entity;
  * author: liubingguang
  * date: 2016/1/7 10:59
  */
-@Entity(name = "T_PASSWORD_AUTH")
-public class PasswordAuth extends BaseEntity{
+@Entity(name = "T_LOCAL_AUTH")
+public class LocalAuth extends BaseEntity{
 
-    private Integer userId;     //用户id
-    private String password;    //登录密码
+    private Long userId;     //用户id
+    private String password; //登录密码
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

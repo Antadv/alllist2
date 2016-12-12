@@ -82,9 +82,9 @@ public abstract class GenericServiceImpl<T extends BaseEntity, ID extends Serial
         Assert.notNull(entity, "entity is null");
         Date date = new Date();
         if (entity.getId() == null) {
-            entity.setFirstTime(date);
+            entity.setCreateDate(date);
         }
-        entity.setLastTime(date);
+        entity.setUpdateDate(date);
         return baseRepository.save(entity);
     }
 

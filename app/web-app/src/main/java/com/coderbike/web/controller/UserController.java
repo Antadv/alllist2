@@ -1,16 +1,16 @@
-package com.coderbike.controller;
+package com.coderbike.web.controller;
 
 import com.coderbike.entity.user.User;
 import com.coderbike.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -29,8 +29,13 @@ public class UserController {
     @Value("${appid}")
     private String appid;
 
-    @Resource
+    @Autowired
     private UserService userService;
+
+    @RequestMapping("index")
+    public ModelAndView index() {
+        return new ModelAndView("user/index");
+    }
 
     @RequestMapping("find")
     public ModelAndView findUser() {
@@ -59,4 +64,5 @@ public class UserController {
     public void testProfile() {
         System.out.println(appid);
     }
+
 }

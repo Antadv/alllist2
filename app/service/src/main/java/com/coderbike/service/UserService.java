@@ -9,7 +9,7 @@ import com.coderbike.entity.user.User;
  * author: liubingguang
  * date: 2016/9/20 15:18
  */
-public interface UserService extends GenericService<User, Integer> {
+public interface UserService extends GenericService<User, Long> {
 
-    User findById(Integer userId);
+    User findById(Long userId);
 }

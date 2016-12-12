@@ -15,12 +15,21 @@ import javax.persistence.Table;
 @Table(name = "T_OAUTH2")
 public class OAuth2 extends BaseEntity {
 
-    private Integer userId;
-    private Integer oauthType;
-    private String oauthName;
-    private String oauthId;
-    private String oauthKey;
-    private String oauthSecret;
+    private Integer userId;     //用户id
+    private Integer oauthType;  //认证类型
+    private String oauthName;   //认证名称
+    private String oauthId;     //认证id
+    private String oauthKey;    //认证key
+    private String oauthSecret; //认证sercret
+    private String accessToken; //认证access_token
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
     public Integer getUserId() {
         return userId;
