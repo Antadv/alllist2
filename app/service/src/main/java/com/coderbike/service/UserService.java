@@ -12,4 +12,8 @@ import com.coderbike.entity.user.User;
 public interface UserService extends GenericService<User, Long> {
 
     User findById(Long userId);
+
+    User findByUsernameAndPwd(String username, String password);
+
+    User register(User user, String password);
 }

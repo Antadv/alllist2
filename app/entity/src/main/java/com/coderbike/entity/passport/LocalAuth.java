@@ -3,6 +3,7 @@ package com.coderbike.entity.passport;
 import com.coderbike.core.entity.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * <p>口令登录<p/>
@@ -10,7 +11,8 @@ import javax.persistence.Entity;
  * author: liubingguang
  * date: 2016/1/7 10:59
  */
-@Entity(name = "T_LOCAL_AUTH")
+@Entity
+@Table(name = "T_LOCAL_AUTH")
 public class LocalAuth extends BaseEntity{
 
     private Long userId;     //用户id

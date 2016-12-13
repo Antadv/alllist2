@@ -19,7 +19,7 @@ public class UserServiceTest extends BaseTest {
 
     @Test
     public void findById() {
-        User user = userService.findById(1);
+        User user = userService.findById(1L);
         System.out.println(user);
     }
 

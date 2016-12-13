@@ -5,4 +5,9 @@
 
 <%-- Path --%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<c:set var="staticsDomain" value="${pageContext.request.contextPath}/statics/"/>
+<c:set var="staticsDomain" value="${pageContext.request.contextPath}/statics"/>
+
+<script type="text/javascript" src="${staticsDomain}/js/base/base.js"></script>
+<script>
+    baseJs.contextPath = '${ctx}';
+</script>

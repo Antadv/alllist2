@@ -16,7 +16,7 @@ public class UserContext implements AutoCloseable {
         CURRENT.set(user);
     }
 
-    public User getCurrentUser() {
+    public static User getCurrentUser() {
         return CURRENT.get();
     }
 

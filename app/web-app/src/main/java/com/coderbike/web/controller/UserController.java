@@ -40,7 +40,7 @@ public class UserController {
     @RequestMapping("find")
     public ModelAndView findUser() {
         ModelAndView modelAndView = new ModelAndView();
-        User user = userService.findById(1);
+        User user = userService.findById(1L);
         modelAndView.addObject("user", user);
         modelAndView.setViewName("user/user");
 

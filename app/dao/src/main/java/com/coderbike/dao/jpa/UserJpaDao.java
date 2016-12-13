@@ -15,4 +15,7 @@ public interface UserJpaDao extends BaseRepository<User, Long> {
 
     @Query("from User u where u.id=?")
     User findById(Long userId);
+
+    @Query(value = "select u.* from t_user u inner join t_local_auth la on u.id=la.user_id where u.delete_status='0' and u.username=?1 and la.password=?2", nativeQuery = true)
+    User findByUsernameAndPwd(String username, String password);
 }
