@@ -11,10 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    用户名 <input type="text" id="username">
-    <br>
-    密码 <input type="password" id="password">
-    <br>
-    <button value="登录" id="submitBtn" />
+${user.username}
 </body>
 </html>

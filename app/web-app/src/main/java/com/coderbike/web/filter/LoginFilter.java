@@ -2,9 +2,9 @@ package com.coderbike.web.filter;
 
 import com.coderbike.common.context.UserContext;
 import com.coderbike.entity.user.User;
-import com.coderbike.utils.context.ArrayUtils;
+import com.coderbike.utils.ArrayUtils;
 import com.coderbike.utils.context.SpringContextUtils;
-import com.coderbike.web.authen.Authenticator;
+import com.coderbike.service.authen.Authenticator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +25,7 @@ public class LoginFilter implements Filter {
 
     private Authenticator[] authenticators = new Authenticator[2];
     private String[] excludedUrl;
+    private String[] staticResource;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -33,6 +34,8 @@ public class LoginFilter implements Filter {
 
         excludedUrl = new String[]{"/", "/index", "/passport/login", "/passport/register",
                 "/passport/loginSubmit", "/passport/registerSubmit"};
+
+        staticResource = new String[]{".js", ".css", ".png", ".jpg", ".gif"};
     }
 
     @Override
@@ -41,7 +44,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        if (ArrayUtils.contain(excludedUrl, url)) {
+        if (ArrayUtils.containEqual(excludedUrl, url) || ArrayUtils.contain(staticResource, url)) {
             chain.doFilter(servletRequest, servletResponse);
         } else {
             User user = tryGetAuthenticatedUser(request, response);

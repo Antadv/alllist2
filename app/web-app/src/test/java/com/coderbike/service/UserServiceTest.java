@@ -26,7 +26,7 @@ public class UserServiceTest extends BaseTest {
     @Test
     public void testSave() {
         User user = new User();
-        user.setUserName("刀刀_2");
+        user.setUsername("刀刀_2");
         user.setSex(true);
     }
 }

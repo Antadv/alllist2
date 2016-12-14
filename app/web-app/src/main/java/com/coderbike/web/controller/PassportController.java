@@ -1,18 +1,26 @@
 package com.coderbike.web.controller;
 
+import com.coderbike.common.constant.CommonConstant;
+import com.coderbike.common.context.UserContext;
+import com.coderbike.core.controller.AbstractController;
+import com.coderbike.entity.passport.LocalAuth;
 import com.coderbike.entity.user.User;
 import com.coderbike.http.ResponseVo;
+import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
+import com.coderbike.service.utils.AuthenCookieUtils;
+import com.coderbike.utils.CookieUtils;
 import com.coderbike.utils.IAssert;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
 
 /**
  * <p>描述<p/>
@@ -22,10 +30,16 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping("passport")
-public class PassportController {
+public class PassportController extends AbstractController {
+
+    @Value("${authSecret}")
+    private String authSecret;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LocalAuthService localAuthService;
 
     @RequestMapping("login")
     public ModelAndView loginUI() {
@@ -40,11 +54,18 @@ public class PassportController {
     @RequestMapping(value = "loginSubmit", method = RequestMethod.POST)
     @ResponseBody
     public ResponseVo login(@RequestParam String username, @RequestParam String password) {
-        Assert.isTrue(StringUtils.isNotBlank(username), "用户名或密码错误");
-        Assert.isTrue(StringUtils.isNotBlank(password), "用户名或密码错误");
+        IAssert.notBlank(username, "用户名或密码错误");
+        IAssert.notBlank(password, "用户名或密码错误");
 
         User user = userService.findByUsernameAndPwd(username, password);
-        Assert.notNull(user, "用户名或密码错误");
+        IAssert.notNull(user, "用户名或密码错误");
+
+        UserContext.bindUser(user);
+        LocalAuth localAuth = localAuthService.findByUserId(user.getId());
+        Cookie cookie = CookieUtils.getCookie(request, CommonConstant.LOGIN_COOKIE);
+        if (cookie == null) {
+            AuthenCookieUtils.addAuthCookie(response, user.getId(), localAuth.getPassword(), authSecret);
+        }
 
         ResponseVo responseVo = new ResponseVo();
         responseVo.success("登录成功", user);
@@ -68,8 +89,8 @@ public class PassportController {
         IAssert.isTrue(password.equals(repassword), "两次密码不一致");
 
         User user = new User();
-        user.setUserName(username);
-        userService.save(user);
+        user.setUsername(username);
+        userService.register(user, password);
 
         return new ResponseVo();
     }

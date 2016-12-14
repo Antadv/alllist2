@@ -1,5 +1,6 @@
 package com.coderbike.web.controller;
 
+import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
 import com.coderbike.service.UserService;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("user")
-public class UserController {
+public class UserController extends AbstractController {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -34,7 +35,10 @@ public class UserController {
 
     @RequestMapping("index")
     public ModelAndView index() {
-        return new ModelAndView("user/index");
+        ModelAndView modelAndView = new ModelAndView("user/index");
+        User user = userService.findById(1L);
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @RequestMapping("find")
@@ -44,7 +48,7 @@ public class UserController {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("user/user");
 
-        logger.info(user.getUserName());
+        logger.info(user.getUsername());
         return modelAndView;
     }
 

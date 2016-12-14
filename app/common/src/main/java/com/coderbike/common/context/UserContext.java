@@ -10,14 +10,18 @@ import com.coderbike.entity.user.User;
  */
 public class UserContext implements AutoCloseable {
 
-    private static final ThreadLocal<User> CURRENT = new ThreadLocal<User>();
+    private static ThreadLocal<User> current = new ThreadLocal<User>();
 
     public UserContext(User user) {
-        CURRENT.set(user);
+        current.set(user);
+    }
+
+    public static void bindUser(User user) {
+        current.set(user);
     }
 
     public static User getCurrentUser() {
-        return CURRENT.get();
+        return current.get();
     }
 
     /**
@@ -26,6 +30,6 @@ public class UserContext implements AutoCloseable {
      */
     @Override
     public void close() throws Exception {
-        CURRENT.remove();
+        current.remove();
     }
 }

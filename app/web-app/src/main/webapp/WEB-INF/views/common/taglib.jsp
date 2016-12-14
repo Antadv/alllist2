@@ -5,8 +5,9 @@
 
 <%-- Path --%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<c:set var="staticsDomain" value="${pageContext.request.contextPath}/statics"/>
+<c:set var="staticsDomain" value="${pageContext.request.contextPath}/static"/>
 
+<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="${staticsDomain}/js/base/base.js"></script>
 <script>
     baseJs.contextPath = '${ctx}';

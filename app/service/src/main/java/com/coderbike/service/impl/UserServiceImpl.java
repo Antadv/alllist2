@@ -41,7 +41,7 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 
     @Override
     public User findByUsernameAndPwd(String username, String password) {
-        return userJpaDao.findByUsernameAndPwd(username, password);
+        return userJpaDao.findByUsernameAndPwd(username, DigestUtils.md5Hex(password + passwordSalt));
     }
 
     @Override

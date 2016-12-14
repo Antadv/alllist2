@@ -1,4 +1,4 @@
-package com.coderbike.web.authen;
+package com.coderbike.service.authen;
 
 import com.coderbike.common.constant.CommonConstant;
 import com.coderbike.entity.passport.LocalAuth;
@@ -44,6 +44,7 @@ public class LocalCookieAuthenticator implements Authenticator {
     @Override
     public User authenticate(HttpServletRequest request, HttpServletResponse response) {
         Cookie cookie = CookieUtils.getCookie(request, CommonConstant.LOGIN_COOKIE);
+        System.out.println(cookie.getMaxAge());
         if (cookie == null
                 || cookie.getMaxAge() < System.currentTimeMillis()
                 || StringUtils.isBlank(cookie.getValue())

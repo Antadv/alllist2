@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "T_USER")
 public class User extends BaseEntity {
 
-    private String userName;    //用户名
+    private String username;    //用户名
     private Boolean sex;        //性别 0 male, 1 female
     private Integer age;        //年龄
     private Date lastLoginDate; //最后登录时间
@@ -46,11 +46,11 @@ public class User extends BaseEntity {
         this.age = age;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -19,7 +19,7 @@
                           com.coderbike.dao,
                           com.coderbike.core.service,
                           com.coderbike.utils.context,
-                          com.coderbike.web.authen"/>
+                          com.coderbike.service.authen"/>
 
     <!-- properties resolver for root webapplication context -->
     <context:property-placeholder

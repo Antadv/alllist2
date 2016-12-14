@@ -9,4 +9,7 @@ package com.coderbike.common.constant;
 public class CommonConstant {
 
     public static final String LOGIN_COOKIE = "cb_l";
+
+    // cookie expire time, secend.
+    public static final int COOKIE_EXPIRE = 30*24*3600;
 }

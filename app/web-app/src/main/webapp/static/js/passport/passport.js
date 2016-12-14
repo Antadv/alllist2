@@ -3,6 +3,10 @@
  */
 var passportJs = $.extend({}, passportJs);
 
+$(function(){
+    console.log('hello');
+});
+
 // 登录
 passportJs.login = function() {
     if (!$('#username').val()) {
@@ -39,7 +43,7 @@ passportJs.login = function() {
 }
 
 // 注册
-passportJs.login = function() {
+passportJs.register = function() {
     if (!$('#username').val()) {
         alert('用户名不能为空');
         return;

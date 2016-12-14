@@ -17,10 +17,8 @@
     <br>
     密码   <input type="password" id="password">&nbsp;<span id="error" style="display: none;"></span>
     <br>
-    <button value="登录" id="submitBtn" />
+    <input type="button" value="登录" id="loginBtn" onclick="passportJs.login()" >
 
-    <script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-    <script src="${staticsDomain}/js/lib/jquery/jquery.md5.js"></script>
     <script src="${staticsDomain}/js/passport/passport.js"></script>
 </body>
 </html>

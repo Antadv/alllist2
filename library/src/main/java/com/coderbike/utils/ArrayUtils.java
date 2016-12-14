@@ -1,4 +1,4 @@
-package com.coderbike.utils.context;
+package com.coderbike.utils;
 
 /**
  * <p>描述<p/>
@@ -8,9 +8,18 @@ package com.coderbike.utils.context;
  */
 public class ArrayUtils {
 
+    public static boolean containEqual(String[] strings, String specifyStr) {
+        for (String str : strings) {
+            if (specifyStr.equals(str)) {
+                return Boolean.TRUE;
+            }
+        }
+        return Boolean.FALSE;
+    }
+
     public static boolean contain(String[] strings, String specifyStr) {
         for (String str : strings) {
-            if (str.equals(specifyStr)) {
+            if (specifyStr.contains(str)) {
                 return Boolean.TRUE;
             }
         }

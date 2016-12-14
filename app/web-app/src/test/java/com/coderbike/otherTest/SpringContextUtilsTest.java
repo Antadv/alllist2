@@ -2,7 +2,7 @@ package com.coderbike.otherTest;
 
 import com.coderbike.baseTest.BaseTest;
 import com.coderbike.utils.context.SpringContextUtils;
-import com.coderbike.web.authen.Authenticator;
+import com.coderbike.service.authen.Authenticator;
 import org.junit.Test;
 
 /**
