@@ -1,11 +1,11 @@
 package com.coderbike.service.utils;
 
 import com.coderbike.common.constant.CommonConstant;
+import com.coderbike.utils.context.RequestContextUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>描述<p/>
@@ -24,12 +24,8 @@ public class AuthenCookieUtils {
      * author: imant
      * date: 2016/12/14 15:58
      */
-    public static void addAuthCookie(HttpServletResponse response,
-                              Long userId,
-                              String password,
-                              String authSecret) {
+    public static void addAuthCookie(long userId, String password, String authSecret) {
 
-        Assert.notNull(userId, "user can't be null");
         Assert.notNull(password, "password can't be null");
         Assert.notNull(authSecret, "authenSecret can't be null");
 
@@ -39,7 +35,7 @@ public class AuthenCookieUtils {
         Cookie cookie = new Cookie(CommonConstant.LOGIN_COOKIE, sb.toString());
         cookie.setHttpOnly(true);
         cookie.setMaxAge(CommonConstant.COOKIE_EXPIRE);
-        cookie.setPath("/");
-        response.addCookie(cookie);
+        cookie.setPath(RequestContextUtil.getRequest().getContextPath() + "/");
+        RequestContextUtil.getResponse().addCookie(cookie);
     }
 }

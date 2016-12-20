@@ -64,7 +64,7 @@ public class PassportController extends AbstractController {
         LocalAuth localAuth = localAuthService.findByUserId(user.getId());
         Cookie cookie = CookieUtils.getCookie(request, CommonConstant.LOGIN_COOKIE);
         if (cookie == null) {
-            AuthenCookieUtils.addAuthCookie(response, user.getId(), localAuth.getPassword(), authSecret);
+            AuthenCookieUtils.addAuthCookie(user.getId(), localAuth.getPassword(), authSecret);
         }
 
         ResponseVo responseVo = new ResponseVo();

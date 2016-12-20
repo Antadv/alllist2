@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
         authenticators[0] = SpringContextUtils.getBean("localCookieAuthenticator");
         authenticators[1] = SpringContextUtils.getBean("oauth2CookieAuthenticator");
 
-        excludedUrl = new String[]{"/", "/index", "/passport/login", "/passport/register",
+        excludedUrl = new String[]{"/passport/login", "/passport/register",
                 "/passport/loginSubmit", "/passport/registerSubmit"};
 
         staticResource = new String[]{".js", ".css", ".png", ".jpg", ".gif"};
@@ -44,7 +44,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        if (ArrayUtils.containEqual(excludedUrl, url) || ArrayUtils.contain(staticResource, url)) {
+        if (ArrayUtils.contain(staticResource, url) || ArrayUtils.contain(excludedUrl, url)) {
             chain.doFilter(servletRequest, servletResponse);
         } else {
             User user = tryGetAuthenticatedUser(request, response);
@@ -55,7 +55,7 @@ public class LoginFilter implements Filter {
                     LOGGER.error("UserContext close 异常", e);
                 }
             } else {
-                response.sendRedirect("/passport/login");
+                response.sendRedirect(request.getContextPath() + "/passport/login");
             }
         }
 

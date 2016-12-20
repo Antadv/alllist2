@@ -5,8 +5,7 @@ import com.coderbike.entity.passport.LocalAuth;
 import com.coderbike.entity.user.User;
 import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
-import com.coderbike.utils.CookieUtils;
-import org.apache.commons.codec.digest.Md5Crypt;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,8 @@ import org.springframework.util.Assert;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import static com.coderbike.utils.CookieUtils.getCookie;
 
 /**
  * <p>描述<p/>
@@ -43,10 +44,8 @@ public class LocalCookieAuthenticator implements Authenticator {
      */
     @Override
     public User authenticate(HttpServletRequest request, HttpServletResponse response) {
-        Cookie cookie = CookieUtils.getCookie(request, CommonConstant.LOGIN_COOKIE);
-        System.out.println(cookie.getMaxAge());
+        Cookie cookie = getCookie(request, CommonConstant.LOGIN_COOKIE);
         if (cookie == null
-                || cookie.getMaxAge() < System.currentTimeMillis()
                 || StringUtils.isBlank(cookie.getValue())
                 || !cookie.getValue().contains(":")) {
             return null;
@@ -69,7 +68,7 @@ public class LocalCookieAuthenticator implements Authenticator {
         if (user != null) {
             LocalAuth localAuth = authService.findByUserId(userId);
             String password = localAuth.getPassword();
-            String md5Str = Md5Crypt.md5Crypt(password.getBytes(), authSecret);
+            String md5Str = DigestUtils.md5Hex(password + authSecret);
             if (md5Str.equals(values[1])) {
                 return user;
             }
