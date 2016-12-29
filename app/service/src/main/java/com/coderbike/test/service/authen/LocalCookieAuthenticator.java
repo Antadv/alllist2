@@ -1,10 +1,10 @@
-package com.coderbike.service.authen;
+package com.coderbike.test.service.authen;
 
 import com.coderbike.common.constant.CommonConstant;
 import com.coderbike.entity.passport.LocalAuth;
 import com.coderbike.entity.user.User;
-import com.coderbike.service.LocalAuthService;
-import com.coderbike.service.UserService;
+import com.coderbike.test.service.LocalAuthService;
+import com.coderbike.test.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;

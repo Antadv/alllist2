@@ -1,4 +1,4 @@
-package com.coderbike.service.authen;
+package com.coderbike.test.service.authen;
 
 import com.coderbike.entity.user.User;
 

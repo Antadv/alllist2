@@ -1,6 +1,6 @@
-package com.coderbike.daoTest;
+package com.coderbike.test.dao;
 
-import com.coderbike.baseTest.BaseTest;
+import com.coderbike.test.base.BaseTest;
 
 /**
  * <p>描述<p/>

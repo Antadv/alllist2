@@ -1,8 +1,8 @@
-package com.coderbike.otherTest;
+package com.coderbike.test.utils;
 
-import com.coderbike.baseTest.BaseTest;
+import com.coderbike.test.base.BaseTest;
 import com.coderbike.utils.context.SpringContextUtils;
-import com.coderbike.service.authen.Authenticator;
+import com.coderbike.test.service.authen.Authenticator;
 import org.junit.Test;
 
 /**

@@ -1,4 +1,4 @@
-package com.coderbike.service;
+package com.coderbike.test.service;
 
 import com.coderbike.core.service.GenericService;
 import com.coderbike.entity.passport.LocalAuth;

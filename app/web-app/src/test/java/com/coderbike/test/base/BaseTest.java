@@ -1,4 +1,4 @@
-package com.coderbike.baseTest;
+package com.coderbike.test.base;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;

@@ -4,7 +4,7 @@ import com.coderbike.common.context.UserContext;
 import com.coderbike.entity.user.User;
 import com.coderbike.utils.ArrayUtils;
 import com.coderbike.utils.context.SpringContextUtils;
-import com.coderbike.service.authen.Authenticator;
+import com.coderbike.test.service.authen.Authenticator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

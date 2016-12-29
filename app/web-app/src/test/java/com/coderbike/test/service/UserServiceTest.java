@@ -1,6 +1,6 @@
-package com.coderbike.service;
+package com.coderbike.test.service;
 
-import com.coderbike.baseTest.BaseTest;
+import com.coderbike.test.base.BaseTest;
 import com.coderbike.entity.user.User;
 import org.junit.Test;
 

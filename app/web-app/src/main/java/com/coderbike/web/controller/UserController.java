@@ -2,7 +2,7 @@ package com.coderbike.web.controller;
 
 import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
-import com.coderbike.service.UserService;
+import com.coderbike.test.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
