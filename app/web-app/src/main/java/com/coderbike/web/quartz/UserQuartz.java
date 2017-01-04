@@ -31,7 +31,7 @@ public class UserQuartz {
      * date: 2017/1/4 18:08
      */
     @Scheduled(cron = "0/20 * * * * *")
-    public void sayHi() {
+    public void userCount() {
         List<User> userList = userService.findAll();
         LOGGER.info("@Scheduled --- " + userList.size());
     }
