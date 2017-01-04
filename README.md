@@ -4,6 +4,7 @@
  - 数据库连接池 Druid
  - json解析器 Fastjson
  - 项目构建 maven
+ - 任务调度 quartz
  - 待续...
 
 # 最佳实践
@@ -13,7 +14,8 @@
  3. 使用`@ControllerAdvice`统一解决Controller异常
  4. 增加`RequestContextUtil`来获取request和response
  5. 舍弃session而重新设计登录验证逻辑
- 6. 待续...
+ 6. `quartz`采用注解方式
+ 7. 待续...
  
 
 

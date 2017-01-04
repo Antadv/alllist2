@@ -1,9 +1,9 @@
-package com.coderbike.test.service.impl;
+package com.coderbike.service.impl;
 
 import com.coderbike.core.service.GenericServiceImpl;
 import com.coderbike.dao.jpa.LocalAuthJpaDao;
 import com.coderbike.entity.passport.LocalAuth;
-import com.coderbike.test.service.LocalAuthService;
+import com.coderbike.service.LocalAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

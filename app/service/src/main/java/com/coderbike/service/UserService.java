@@ -1,4 +1,4 @@
-package com.coderbike.test.service;
+package com.coderbike.service;
 
 import com.coderbike.core.service.GenericService;
 import com.coderbike.entity.user.User;
