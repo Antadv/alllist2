@@ -1,10 +1,10 @@
 # 技术选型
 
- - 基本框架 Springmvc + Spring + Jpa + Mybatis
- - 数据库连接池 Druid
- - json解析器 Fastjson
- - 项目构建 maven
- - 任务调度 quartz
+ - Springmvc + Spring + Jpa + Mybatis（基本框架）
+ - Druid（数据库连接池）
+ - Fastjson（json解析器）
+ - Maven（项目构建）
+ - Quartz（任务调度）
  - 待续...
 
 # 最佳实践
