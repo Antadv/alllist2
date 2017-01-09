@@ -3,8 +3,6 @@ package com.coderbike.web.controller;
 import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
 import com.coderbike.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,8 +22,6 @@ import java.util.List;
 @Controller
 @RequestMapping("user")
 public class UserController extends AbstractController {
-
-    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Value("${appid}")
     private String appid;

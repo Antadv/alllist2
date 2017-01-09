@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>login</title>
+    <%@ include file="/WEB-INF/views/common/meta.jsp"%>
 </head>
 <body>
     用户名 <input type="text" id="username">

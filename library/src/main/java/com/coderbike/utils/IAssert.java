@@ -2,7 +2,7 @@ package com.coderbike.utils;
 
 import com.coderbike.core.entity.BaseEntity;
 import com.coderbike.exception.AuthenException;
-import com.coderbike.exception.GeneralException;
+import com.coderbike.exception.GlobalException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
@@ -23,19 +23,19 @@ public class IAssert extends Assert {
 
     public static void notNull(Object obj, String message) {
         if (obj == null) {
-            throw new GeneralException(message);
+            throw new GlobalException(message);
         }
     }
 
     public static void notBlank(String str, String message) {
         if (StringUtils.isBlank(str)) {
-            throw new GeneralException(message);
+            throw new GlobalException(message);
         }
     }
 
     public static void isTrue(boolean expression, String message) {
         if (!expression) {
-            throw new GeneralException(message);
+            throw new GlobalException(message);
         }
     }
 

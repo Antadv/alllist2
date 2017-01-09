@@ -3,10 +3,6 @@
  */
 var passportJs = $.extend({}, passportJs);
 
-$(function(){
-    console.log('hello');
-});
-
 // 登录
 passportJs.login = function() {
     if (!$('#username').val()) {

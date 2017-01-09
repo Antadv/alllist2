@@ -30,7 +30,7 @@ public class UserQuartz {
      * author: imant
      * date: 2017/1/4 18:08
      */
-    @Scheduled(cron = "0/20 * * * * *")
+    @Scheduled(cron = "0/59 * * * * *")
     public void userCount() {
         List<User> userList = userService.findAll();
         LOGGER.info("@Scheduled --- " + userList.size());
@@ -41,7 +41,7 @@ public class UserQuartz {
      * author: imant
      * date: 2017/1/4 18:12
      */
-    @Scheduled(cron = "0/2 * * * * *")
+    @Scheduled(cron = "0/59 * * * * *")
     public void test() {
         System.out.println("current time: " + new Date());
     }
