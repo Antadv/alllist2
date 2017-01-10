@@ -10,6 +10,8 @@ public class CommonConstant {
 
     public static final String LOGIN_COOKIE = "cb_l";
 
+    public static final String SESSION_USER = "sessionUserId";
+
     // cookie expire time, secend.
     public static final int COOKIE_EXPIRE = 30*24*3600;
 }

@@ -1,5 +1,6 @@
 package com.coderbike.web.filter;
 
+import com.coderbike.common.constant.CommonConstant;
 import com.coderbike.common.context.UserContext;
 import com.coderbike.entity.user.User;
 import com.coderbike.utils.ArrayUtils;
@@ -44,12 +45,15 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        if (ArrayUtils.contain(staticResource, url) || ArrayUtils.contain(excludedUrl, url)) {
+        if (ArrayUtils.contain(staticResource, url)
+                || ArrayUtils.contain(excludedUrl, url)
+                || "/".equals(url)) {
             chain.doFilter(servletRequest, servletResponse);
         } else {
             User user = tryGetAuthenticatedUser(request, response);
             if (user != null) {
                 try (UserContext userContext = new UserContext(user)) {
+                    request.getSession().setAttribute(CommonConstant.SESSION_USER, user.getId());
                     chain.doFilter(servletRequest, servletResponse);
                 } catch (Exception e) {
                     LOGGER.error("UserContext close 异常", e);

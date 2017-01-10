@@ -58,4 +58,16 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 
         return user;
     }
+
+    @Override
+    @Transactional
+    public void deleteAccount(Long userId) {
+        Assert.notNull(userId, "userId can't be null");
+
+        delete(userId);
+        LocalAuth localAuth = localAuthService.findByUserId(userId);
+        if (localAuth != null) {
+            localAuthService.delete(localAuth);
+        }
+    }
 }

@@ -34,4 +34,8 @@ public class CookieUtils {
         }
         return null;
     }
+
+    public static void deleteCookie(HttpServletRequest request, String cookieName) {
+
+    }
 }

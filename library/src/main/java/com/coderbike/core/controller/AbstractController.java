@@ -31,6 +31,7 @@ public class AbstractController<T extends BaseEntity> {
      * 没用@ResposeBody, 考虑到查询后可能会跳转
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
     protected Object get(@PathVariable("id") Long id) {
         return null;
     }
@@ -40,7 +41,7 @@ public class AbstractController<T extends BaseEntity> {
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
-    protected T add(@RequestBody T t) {
+    protected Object add(@RequestBody T t) {
         return null;
     }
 
@@ -49,7 +50,7 @@ public class AbstractController<T extends BaseEntity> {
      */
     @RequestMapping(value = "", method = RequestMethod.PUT)
     @ResponseBody
-    protected T update(@RequestBody T t) {
+    protected Object update(@RequestBody T t) {
         return null;
     }
 
@@ -57,6 +58,7 @@ public class AbstractController<T extends BaseEntity> {
      * restful delete /api/id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
     protected Object delete(@PathVariable("id") Long id) {
         return null;
     }

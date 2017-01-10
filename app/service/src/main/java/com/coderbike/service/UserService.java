@@ -16,4 +16,6 @@ public interface UserService extends GenericService<User, Long> {
     User findByUsernameAndPwd(String username, String password);
 
     User register(User user, String password);
+
+    void deleteAccount(Long userId);
 }

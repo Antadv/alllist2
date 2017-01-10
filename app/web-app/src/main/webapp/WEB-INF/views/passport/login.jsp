@@ -21,5 +21,6 @@
     <input type="button" value="登录" id="loginBtn" onclick="passportJs.login()" >
 
     <script src="${staticsDomain}/js/passport/passport.js"></script>
+    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>

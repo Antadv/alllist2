@@ -7,3 +7,4 @@
 <%-- Path --%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="staticsDomain" value="${pageContext.request.contextPath}/static"/>
+<c:set var="userId" value="${sessionUserId}" />

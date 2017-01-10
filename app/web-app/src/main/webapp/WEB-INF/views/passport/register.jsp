@@ -2,6 +2,7 @@
 <%@ include file="/WEB-INF/views/common/taglib.jsp"%>
 <html>
 <head>
+    <%@ include file="/WEB-INF/views/common/meta.jsp"%>
     <title>register</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
     <br>
     <input type="button" value="注册" id="registerBtn" onclick="passportJs.register()" />
 
+    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
     <script src="${staticsDomain}/js/passport/passport.js"></script>
 </body>
 </html>

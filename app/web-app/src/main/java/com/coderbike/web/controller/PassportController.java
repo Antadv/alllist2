@@ -9,7 +9,6 @@ import com.coderbike.http.ResponseVo;
 import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
 import com.coderbike.service.utils.AuthenCookieUtils;
-import com.coderbike.utils.CookieUtils;
 import com.coderbike.utils.IAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.Cookie;
 
 /**
  * <p>描述<p/>
@@ -41,7 +38,7 @@ public class PassportController extends AbstractController {
     @Autowired
     private LocalAuthService localAuthService;
 
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public ModelAndView loginUI() {
         return new ModelAndView("passport/login");
     }
@@ -51,7 +48,7 @@ public class PassportController extends AbstractController {
      * author: liubingguang
      * date: 2016/12/13 15:54
      */
-    @RequestMapping(value = "loginSubmit", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginSubmit", method = RequestMethod.POST)
     @ResponseBody
     public ResponseVo login(@RequestParam String username, @RequestParam String password) {
         IAssert.notBlank(username, "用户名或密码错误");
@@ -60,12 +57,11 @@ public class PassportController extends AbstractController {
         User user = userService.findByUsernameAndPwd(username, password);
         IAssert.notNull(user, "用户名或密码错误");
 
+        request.getSession().setAttribute(CommonConstant.SESSION_USER, user.getId());
+
         UserContext.bindUser(user);
         LocalAuth localAuth = localAuthService.findByUserId(user.getId());
-        Cookie cookie = CookieUtils.getCookie(request, CommonConstant.LOGIN_COOKIE);
-        if (cookie == null) {
-            AuthenCookieUtils.addAuthCookie(user.getId(), localAuth.getPassword(), authSecret);
-        }
+        AuthenCookieUtils.addAuthCookie(user.getId(), localAuth.getPassword(), authSecret);
 
         ResponseVo responseVo = new ResponseVo();
         responseVo.success("登录成功", user);
@@ -77,7 +73,7 @@ public class PassportController extends AbstractController {
      * author: liubingguang
      * date: 2016/12/13 15:55
      */
-    @RequestMapping("registerSubmit")
+    @RequestMapping("/registerSubmit")
     @ResponseBody
     public ResponseVo register(@RequestParam String username,
                                @RequestParam String password,
@@ -90,7 +86,11 @@ public class PassportController extends AbstractController {
 
         User user = new User();
         user.setUsername(username);
-        userService.register(user, password);
+        user = userService.register(user, password);
+
+        // reset login cookie
+        LocalAuth localAuth = localAuthService.findByUserId(user.getId());
+        AuthenCookieUtils.addAuthCookie(user.getId(), localAuth.getPassword(), authSecret);
 
         return new ResponseVo();
     }

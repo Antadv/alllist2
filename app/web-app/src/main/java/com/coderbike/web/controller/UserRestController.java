@@ -3,6 +3,8 @@ package com.coderbike.web.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
+import com.coderbike.http.ResponseVo;
+import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
 import com.coderbike.utils.IAssert;
 import com.coderbike.utils.RenderUtils;
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>测试restful<p/>
@@ -25,6 +29,9 @@ public class UserRestController extends AbstractController<User> {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private LocalAuthService localAuthService;
+
     /**
      * restful get /api/id
      */
@@ -38,9 +45,10 @@ public class UserRestController extends AbstractController<User> {
 
     /**
      * restful post /api
+     * post and put 方式请求，请求体只能是json格式，不能为K=V格式
      */
     @Override
-    protected User add(@RequestBody User user) {
+    protected Object add(@RequestBody User user) {
         IAssert.notNull(user, "user can't be nul");
         return userService.save(user);
     }
@@ -49,7 +57,7 @@ public class UserRestController extends AbstractController<User> {
      * restful put /api
      */
     @Override
-    protected User update(@RequestBody User user) {
+    protected Object update(@RequestBody User user) {
         IAssert.notNull(user, "user can't be nul");
         return userService.save(user);
     }
@@ -60,6 +68,13 @@ public class UserRestController extends AbstractController<User> {
     @Override
     protected Object delete(@PathVariable("id") Long id) {
         IAssert.notNull(id, "id can't be null");
-        return userService.findById(id);
+
+        userService.deleteAccount(id);
+        HttpSession session = request.getSession();
+        if (session != null) {
+            session.invalidate();
+        }
+
+        return new ResponseVo(ResponseVo.SUCESS_CODE, "删除成功");
     }
 }

@@ -1,0 +1,16 @@
+.index-div {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.content {
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+    text-decoration: underline;
+    color: blue;
+}
