@@ -1,11 +1,13 @@
 package com.coderbike.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.coderbike.common.constant.CommonConstant;
 import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
 import com.coderbike.http.ResponseVo;
 import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
+import com.coderbike.utils.CookieUtils;
 import com.coderbike.utils.IAssert;
 import com.coderbike.utils.RenderUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +76,7 @@ public class UserRestController extends AbstractController<User> {
         if (session != null) {
             session.invalidate();
         }
+        CookieUtils.deleteCookie(request, response, CommonConstant.LOGIN_COOKIE);
 
         return new ResponseVo(ResponseVo.SUCESS_CODE, "删除成功");
     }
