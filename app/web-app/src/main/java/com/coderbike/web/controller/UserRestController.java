@@ -5,7 +5,6 @@ import com.coderbike.common.constant.CommonConstant;
 import com.coderbike.core.controller.AbstractController;
 import com.coderbike.entity.user.User;
 import com.coderbike.http.ResponseVo;
-import com.coderbike.service.LocalAuthService;
 import com.coderbike.service.UserService;
 import com.coderbike.utils.CookieUtils;
 import com.coderbike.utils.IAssert;
@@ -30,9 +29,6 @@ public class UserRestController extends AbstractController<User> {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private LocalAuthService localAuthService;
 
     /**
      * restful get /api/id
