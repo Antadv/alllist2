@@ -44,7 +44,7 @@
         <jackjson.version>2.4.3</jackjson.version>
         <ehcache.version>2.6.9</ehcache.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
-        <quartz.version>2.2.1</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
 
         <!-- Javaee dependency versions -->
         <javax-servlet-api.version>3.1.0</javax-servlet-api.version>
