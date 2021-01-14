@@ -39,7 +39,7 @@
         <validator.version>5.1.1.Final</validator.version>
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.10</slf4j.version>
-        <poi.version>3.14</poi.version>
+        <poi.version>4.1.2</poi.version>
         <fastjson.version>1.2.17</fastjson.version>
         <jackjson.version>2.4.3</jackjson.version>
         <ehcache.version>2.6.9</ehcache.version>
