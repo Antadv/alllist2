@@ -19,7 +19,7 @@
         <!-- Framework dependency versions -->
         <spring.version>4.3.2.RELEASE</spring.version>
         <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
-        <hibernate.version>4.3.0.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
         <hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <mybatis.version>3.2.8</mybatis.version>
