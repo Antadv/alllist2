@@ -24,7 +24,7 @@
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <mybatis.version>3.2.8</mybatis.version>
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
-        <mysql-driver.version>5.1.38</mysql-driver.version>
+        <mysql-driver.version>8.0.28</mysql-driver.version>
         <alibaba-druid.version>1.0.26</alibaba-druid.version>
         <junit.version>4.12</junit.version>
 
