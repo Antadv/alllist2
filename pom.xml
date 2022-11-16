@@ -41,7 +41,7 @@
         <slf4j.version>1.7.10</slf4j.version>
         <poi.version>3.14</poi.version>
         <fastjson.version>1.2.17</fastjson.version>
-        <jackjson.version>2.4.3</jackjson.version>
+        <jackjson.version>2.12.7.1</jackjson.version>
         <ehcache.version>2.6.9</ehcache.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
         <quartz.version>2.2.1</quartz.version>
